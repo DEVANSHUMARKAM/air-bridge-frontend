@@ -1,17 +1,21 @@
 import React from 'react';
-import { ThemeProvider } from '@mui/material/styles';
-import { BrowserRouter as Router } from 'react-router-dom';
-import theme from './theme.js';
-import Navbar from './components/Navbar.jsx';
-import AppRoutes from './routes/AppRoutes.jsx';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import LandingPage from './pages/LandingPage';
+import SignInPage from './pages/SignInPage';
+import SignUpPage from './pages/SignUpPage';
 
-const App = () => (
-  <ThemeProvider theme={theme}>
+const App = () => {
+  return (
     <Router>
       <Navbar />
-      <AppRoutes />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+      </Routes>
     </Router>
-  </ThemeProvider>
-);
+  );
+};
 
 export default App;

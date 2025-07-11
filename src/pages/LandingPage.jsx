@@ -8,7 +8,6 @@ import HowItWorksSection from '../components/HowItWorksSection';
 import AirBridgeFeaturesSection from '../components/AirBridgeFeaturesSection';
 import FAQSection from '../components/FAQSection';
 import AirBridgeInfoSection from '../components/AirBridgeInfoSection';
-// import planeImage from '../assets/airoplane.jpeg'; // keep if needed
 
 const LandingPage = () => {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -31,7 +30,6 @@ const LandingPage = () => {
     }
   };
 
-  // Show scroll-to-top button after scrolling 300px
   useEffect(() => {
     const handleScroll = () => {
       setShowScroll(window.scrollY > 300);
@@ -46,9 +44,11 @@ const LandingPage = () => {
 
   return (
     <Box sx={{ backgroundColor: 'background.default', minHeight: '100vh' }}>
-      {/* Hero section */}
+      {/* Hero section with gradient */}
       <Box
         sx={{
+          background: 'linear-gradient(to right, #007bff, #00c6ff)',
+          color: 'white',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -68,7 +68,7 @@ const LandingPage = () => {
           <Button variant="contained" color="primary" size="large" sx={{ borderRadius: 3 }}>
             Send
           </Button>
-          <Button variant="outlined" color="primary" size="large" sx={{ borderRadius: 3 }}>
+          <Button variant="outlined" color="inherit" size="large" sx={{ borderRadius: 3 }}>
             Receive
           </Button>
         </Box>

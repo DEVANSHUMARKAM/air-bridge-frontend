@@ -1,26 +1,34 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, Box, Button, Typography, Paper } from '@mui/material';
-import logo from '../assets/logo.jpeg'; // adjust path
+import { AppBar, Toolbar, Box, Button, Paper } from '@mui/material';
+import { useNavigate, useLocation } from 'react-router-dom';
+import logo from '../assets/logo.jpeg'; // adjust path if needed
 
 const Navbar = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isSignInActive = location.pathname === '/signin';
+  const isSignUpActive = location.pathname === '/signup';
 
   return (
     <AppBar
       position="static"
       elevation={0}
       sx={{
-        background: 'linear-gradient(to right, #007bff, #00c6ff)',
+        backgroundColor: 'white',
+        color: '#000', // make text dark on white
       }}
     >
       <Toolbar sx={{ justifyContent: 'space-between', position: 'relative' }}>
-        {/* Logo */}
+        {/* Logo clickable */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Box
             component="img"
             src={logo}
             alt="AirBridge Logo"
-            sx={{ height: 80, mr: 1 }}
+            onClick={() => navigate('/')}
+            sx={{ height: 80, mr: 1, cursor: 'pointer' }}
           />
         </Box>
 
@@ -33,10 +41,10 @@ const Navbar = () => {
             sx={{ position: 'relative' }}
           >
             <Button
-              color="inherit"
               sx={{
                 fontWeight: 'bold',
-                '&:hover': { textDecoration: 'underline' }
+                color: '#000',
+                '&:hover': { textDecoration: 'underline' },
               }}
             >
               Our Services
@@ -53,7 +61,7 @@ const Navbar = () => {
                   zIndex: 10,
                   minWidth: 220,
                   borderRadius: 1,
-                  overflow: 'hidden'
+                  overflow: 'hidden',
                 }}
               >
                 {[
@@ -62,7 +70,7 @@ const Navbar = () => {
                   'Folder Transfers',
                   'Track & Manage Transfers',
                   'Custom Branding',
-                  'Secure Storage'
+                  'Secure Storage',
                 ].map((service, index) => (
                   <Box
                     key={index}
@@ -72,7 +80,7 @@ const Navbar = () => {
                       cursor: 'pointer',
                       fontSize: '0.95rem',
                       fontWeight: 500,
-                      '&:hover': { bgcolor: '#f0f0f0' }
+                      '&:hover': { bgcolor: '#f0f0f0' },
                     }}
                   >
                     {service}
@@ -83,16 +91,51 @@ const Navbar = () => {
           </Box>
 
           {/* Other buttons */}
-          <Button color="inherit" sx={{ fontWeight: 'bold' }}>Our Offers</Button>
-          <Button color="inherit" sx={{ fontWeight: 'bold' }}>Developer</Button>
-          <Button color="inherit" sx={{ fontWeight: 'bold' }}>Resources</Button>
-          <Button
-            color="inherit"
-            variant="outlined"
-            sx={{ borderRadius: 4, fontWeight: 'bold' }}
+          <Button sx={{ fontWeight: 'bold', color: '#000' }}>Our Offers</Button>
+          <Button sx={{ fontWeight: 'bold', color: '#000' }}>Developer</Button>
+          <Button sx={{ fontWeight: 'bold', color: '#000' }}>Resources</Button>
+
+          {/* Sign in / Sign up toggle with gradient */}
+          <Box
+            sx={{
+              display: 'flex',
+              borderRadius: '20px',
+              overflow: 'hidden',
+              border: '2px solid #007bff',
+              background: 'white',
+            }}
           >
-            Sign In / Sign Up
-          </Button>
+            <Button
+              onClick={() => navigate('/signin')}
+              sx={{
+                color: isSignInActive ? 'white' : '#000',
+                background: isSignInActive ? 'linear-gradient(to right, #007bff, #00c6ff)' : 'transparent',
+                px: 2,
+                fontWeight: 'bold',
+                textTransform: 'none',
+                '&:hover': {
+                  background: isSignInActive ? 'linear-gradient(to right, #007bff, #00c6ff)' : '#f0f0f0',
+                },
+              }}
+            >
+              Sign in
+            </Button>
+            <Button
+              onClick={() => navigate('/signup')}
+              sx={{
+                color: isSignUpActive ? 'white' : '#000',
+                background: isSignUpActive ? 'linear-gradient(to right, #007bff, #00c6ff)' : 'transparent',
+                px: 2,
+                fontWeight: 'bold',
+                textTransform: 'none',
+                '&:hover': {
+                  background: isSignUpActive ? 'linear-gradient(to right, #007bff, #00c6ff)' : '#f0f0f0',
+                },
+              }}
+            >
+              Sign up
+            </Button>
+          </Box>
         </Box>
       </Toolbar>
     </AppBar>
