@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import LandingPage from './pages/LandingPage';
-import SignInPage from './pages/SignInPage';
-import SignUpPage from './pages/SignUpPage';
+import SignUpModal from './components/SignUpModal';
+import SignInModal from './components/SignInModal';
 
 const App = () => {
   return (
@@ -11,8 +11,8 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/signin" element={<SignInPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/signup" element={<SignUpModal />} />
+        <Route path="/signin" element={<SignInModal />} />
       </Routes>
     </Router>
   );

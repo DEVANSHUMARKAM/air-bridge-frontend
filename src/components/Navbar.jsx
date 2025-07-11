@@ -16,12 +16,12 @@ const Navbar = () => {
       position="static"
       elevation={0}
       sx={{
-        backgroundColor: 'white',
-        color: '#000', // make text dark on white
+        backgroundColor: 'white', // keep navbar background white
+        color: '#000', // dark text
       }}
     >
       <Toolbar sx={{ justifyContent: 'space-between', position: 'relative' }}>
-        {/* Logo clickable */}
+        {/* Logo */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Box
             component="img"
@@ -44,6 +44,7 @@ const Navbar = () => {
               sx={{
                 fontWeight: 'bold',
                 color: '#000',
+                textTransform: 'none',
                 '&:hover': { textDecoration: 'underline' },
               }}
             >
@@ -91,11 +92,11 @@ const Navbar = () => {
           </Box>
 
           {/* Other buttons */}
-          <Button sx={{ fontWeight: 'bold', color: '#000' }}>Our Offers</Button>
-          <Button sx={{ fontWeight: 'bold', color: '#000' }}>Developer</Button>
-          <Button sx={{ fontWeight: 'bold', color: '#000' }}>Resources</Button>
+          <Button sx={{ fontWeight: 'bold', color: '#000', textTransform: 'none' }}>Our Offers</Button>
+          <Button sx={{ fontWeight: 'bold', color: '#000', textTransform: 'none' }}>Developer</Button>
+          <Button sx={{ fontWeight: 'bold', color: '#000', textTransform: 'none' }}>Resources</Button>
 
-          {/* Sign in / Sign up toggle with gradient */}
+          {/* Sign in / Sign up toggle */}
           <Box
             sx={{
               display: 'flex',
